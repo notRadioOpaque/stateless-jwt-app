@@ -62,3 +62,5 @@ auth.post("/login", async (c) => {
 
   return c.json({ token });
 });
+
+export default auth;
