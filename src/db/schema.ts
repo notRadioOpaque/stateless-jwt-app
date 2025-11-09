@@ -10,13 +10,3 @@ export const users = pgTable("users", {
     .defaultNow()
     .$onUpdate(() => new Date()),
 });
-
-export const sessions = pgTable("sessions", {
-  id: serial("id").primaryKey(),
-  sessionId: text("session_id").notNull().unique(),
-  userId: integer("user_id")
-    .notNull()
-    .references(() => users.id, { onDelete: "cascade" }),
-  expiresAt: timestamp("expires_at").notNull(),
-  createdAt: timestamp("created_at").notNull().defaultNow(),
-});
